@@ -6,7 +6,7 @@ import Link from "next/link";
 import { NavUser } from "./NavUser";
 import { useUser } from "@clerk/nextjs";
 
-export function AppSidebar() {
+export default function AppSidebar() {
   const { isLoaded, isSignedIn, user } = useUser();
 
   if (!isLoaded || !isSignedIn || !user) {
@@ -69,7 +69,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link
-                href="/holdings"
+                href="/dashboard/holdings"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
                 aria-label="Holdings"
               >
@@ -82,7 +82,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link
-                href="/insights"
+                href="/dashboard/insights"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
                 aria-label="Insights"
               >
