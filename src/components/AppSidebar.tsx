@@ -1,19 +1,24 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarSeparator,
-} from "@/components/ui/sidebar"
-import { BarChart2, Home, Layers, TrendingUp } from "lucide-react"
-import Link from "next/link"
-import { NavUser } from "./NavUser"
+"use client";
+
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from "@/components/ui/sidebar";
+import { BarChart2, Home, Layers, TrendingUp } from "lucide-react";
+import Link from "next/link";
+import { NavUser } from "./NavUser";
+import { useUser } from "@clerk/nextjs";
 
 export function AppSidebar() {
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  if (!isLoaded || !isSignedIn || !user) {
+    return null;
+  }
+
+  const userData = {
+    name: user.fullName ?? "User",
+    email: user.primaryEmailAddress?.emailAddress ?? "no-email@example.com",
+    avatar: user.imageUrl ?? "",
+  };
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -95,11 +100,7 @@ export function AppSidebar() {
       <SidebarSeparator className="mx-auto"/>
 
       <SidebarFooter>
-        <NavUser user={{
-          name: 'John Doe',
-          email: 'john@example.com',
-          avatar: 'https://github.com/shadcn.png'
-        }} />
+        <NavUser user={userData} />
       </SidebarFooter>
     </Sidebar>
   )
