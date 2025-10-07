@@ -1,103 +1,82 @@
-import Image from "next/image";
+import { BarChart2, Layers, TrendingUp, User, MoveRight } from "lucide-react";
 
-export default function Home() {
+export default function App() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+    <main className="flex flex-col min-h-screen bg-gray-900 text-white font-sans">
+      <header
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[85%] px-5 sm:px-8 py-2.5 bg-white/10 backdrop-blur-lg rounded-full border border-gray-700 shadow-lg"
+      >
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Layers className="w-7 h-7 text-sky-400" />
+            <span className="text-xl font-bold text-white">Portfolio Tracker</span>
+          </div>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/sign-in"
+            className="px-6 py-2 bg-white text-sky-600 font-semibold rounded-full shadow-md hover:bg-gray-200 transition-colors duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Get Started
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      <section className="flex-grow flex items-center justify-center text-center px-4 pt-48 pb-16">
+        <div className="max-w-3xl">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-white">
+            Track Your Investments with Ease
+          </h1>
+          <p className="mb-10 text-lg text-gray-300">
+            Monitor your entire portfolio in one place. Make smarter, data-driven decisions without the clutter.
+          </p>
+          <a
+            href="/sign-in"
+            className="inline-flex items-center px-10 py-4 bg-sky-500 text-white font-bold rounded-full shadow-lg shadow-sky-500/30 hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 group"
+          >
+            Start Tracking for Free
+            <MoveRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+      </section>
+
+      <section id="features" className="py-24 w-full bg-black/20">
+        <div className="px-4 text-center max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-14">
+            Everything You Need, Nothing You Don't
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <div className="p-10 bg-gray-800 rounded-2xl border border-gray-700">
+              <div className="flex justify-center items-center mb-6 bg-gray-700 w-20 h-20 rounded-full mx-auto">
+                <TrendingUp className="w-9 h-9 text-sky-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">Real-Time Tracking</h3>
+              <p className="text-gray-400">Monitor your assets with up-to-date market data to stay informed.</p>
+            </div>
+
+            <div className="p-10 bg-gray-800 rounded-2xl border border-gray-700">
+              <div className="flex justify-center items-center mb-6 bg-gray-700 w-20 h-20 rounded-full mx-auto">
+                <BarChart2 className="w-9 h-9 text-sky-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">Clear Analytics</h3>
+              <p className="text-gray-400">Analyze your performance and allocation with simple, powerful charts.</p>
+            </div>
+
+            <div className="p-10 bg-gray-800 rounded-2xl border border-gray-700">
+              <div className="flex justify-center items-center mb-6 bg-gray-700 w-20 h-20 rounded-full mx-auto">
+                <User className="w-9 h-9 text-sky-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">Simple Interface</h3>
+              <p className="text-gray-400">Enjoy a clean, intuitive design that makes managing your portfolio easy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="w-full text-center py-10 bg-gray-900">
+        <p className="text-gray-500">
+          &copy; 2025 Portfolio Tracker. All rights reserved.
+        </p>
       </footer>
-    </div>
+    </main>
   );
 }
