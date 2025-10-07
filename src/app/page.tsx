@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { BarChart2, Layers, TrendingUp, User, MoveRight } from "lucide-react";
 
 export default function App() {
@@ -8,15 +10,16 @@ export default function App() {
       >
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Layers className="w-7 h-7 text-sky-400" />
-            <span className="text-xl font-bold text-white">Portfolio Tracker</span>
+            <TrendingUp className="w-7 h-7 text-sky-400" />
+            <span className="text-xl font-bold text-white">Finlyze</span>
           </div>
-          <a
-            href="/sign-in"
-            className="px-6 py-2 bg-white text-sky-600 font-semibold rounded-full shadow-md hover:bg-gray-200 transition-colors duration-300"
-          >
-            Get Started
-          </a>
+          <SignedOut>
+            <SignInButton>
+              <Button className="rounded-full px-6 cursor-pointer">
+                Log In
+              </Button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </header>
 
@@ -28,13 +31,14 @@ export default function App() {
           <p className="mb-10 text-lg text-gray-300">
             Monitor your entire portfolio in one place. Make smarter, data-driven decisions without the clutter.
           </p>
-          <a
-            href="/sign-in"
-            className="inline-flex items-center px-10 py-4 bg-sky-500 text-white font-bold rounded-full shadow-lg shadow-sky-500/30 hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 group"
-          >
-            Start Tracking for Free
-            <MoveRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-          </a>
+          <SignedOut>
+            <SignUpButton>
+              <Button className="inline-flex items-center bg-sky-500 text-white font-bold rounded-full shadow-lg shadow-sky-500/30 hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 group">
+                Start Tracking for Free
+                <MoveRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </SignUpButton>
+          </SignedOut>
         </div>
       </section>
 

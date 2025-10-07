@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SidebarTrigger } from "./ui/sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./ModeToggle";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 export default function Navbar({ bTitle }: { bTitle: string }) {
   return (
@@ -19,10 +19,9 @@ export default function Navbar({ bTitle }: { bTitle: string }) {
       <div className="flex items-center gap-4">
         <ModeToggle />
 
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </div>
   )
