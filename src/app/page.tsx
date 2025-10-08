@@ -1,8 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
-import { BarChart2, Layers, TrendingUp, User, MoveRight } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { BarChart2, TrendingUp, User, MoveRight } from "lucide-react";
+import { redirect } from "next/navigation";
 
-export default function App() {
+export default async function App() {
+  const { userId } = await auth();
+  if (userId) {
+    redirect('/dashboard');
+  }
+
   return (
     <main className="flex flex-col min-h-screen bg-gray-900 text-white font-sans">
       <header
@@ -13,13 +20,15 @@ export default function App() {
             <TrendingUp className="w-7 h-7 text-sky-400" />
             <span className="text-xl font-bold text-white">Finlyze</span>
           </div>
-          <SignedOut>
-            <SignInButton>
-              <Button className="rounded-full px-6 cursor-pointer">
-                Log In
-              </Button>
-            </SignInButton>
-          </SignedOut>
+          <div suppressHydrationWarning>
+            <SignedOut>
+              <SignInButton>
+                <Button className="rounded-full px-6 cursor-pointer">
+                  Log In
+                </Button>
+              </SignInButton>
+            </SignedOut>
+          </div>
         </div>
       </header>
 
