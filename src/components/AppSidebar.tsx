@@ -1,10 +1,11 @@
 "use client";
 
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from "@/components/ui/sidebar";
-import { BarChart2, Home, Layers, TrendingUp } from "lucide-react";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarSeparator } from "@/components/ui/sidebar";
+import { BarChart2, ChevronRight, Home, Layers, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { NavUser } from "./NavUser";
 import { useUser } from "@clerk/nextjs";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 
 export default function AppSidebar() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -49,10 +50,10 @@ export default function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarSeparator className="mx-auto"/>
+      <SidebarSeparator className="mx-auto" />
 
       <SidebarContent className="pt-2 px-2">
-        <SidebarMenu>
+        {/* <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link
@@ -64,40 +65,90 @@ export default function AppSidebar() {
                 <span className="truncate">Dashboard</span>
               </Link>
             </SidebarMenuButton>
-          </SidebarMenuItem>
 
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link
-                href="/dashboard/holdings"
-                className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
-                aria-label="Holdings"
-              >
-                <Layers className="w-5 h-5 text-gray-400" />
-                <span className="truncate">Holdings</span>
-              </Link>
-            </SidebarMenuButton>
+            <SidebarMenuSub className="mt-1">
+              <SidebarMenuSubItem>
+                <SidebarMenuButton asChild>
+                  <Link
+                    href="/dashboard/holdings"
+                    className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                    aria-label="Holdings"
+                  >
+                    <Layers className="w-5 h-5 text-gray-400" />
+                    <span className="truncate">Holdings</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuSubItem>
+              <SidebarMenuSubItem>
+                <SidebarMenuButton asChild>
+                  <Link
+                    href="/dashboard/insights"
+                    className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                    aria-label="Insights"
+                  >
+                    <BarChart2 className="w-5 h-5 text-gray-400" />
+                    <span className="truncate">Insights</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuSubItem>
+            </SidebarMenuSub>
           </SidebarMenuItem>
+        </SidebarMenu> */}
+        <SidebarMenu>
+          <SidebarMenu>
+            <Collapsible defaultOpen className="group/collapsible">
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      href="/dashboard"
+                      className="flex items-center justify-between w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                      aria-label="Dashboard"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Home className="w-5 h-5 text-gray-400" />
+                        <span className="truncate">Dashboard</span>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-gray-400 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    </Link>
 
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link
-                href="/dashboard/insights"
-                className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
-                aria-label="Insights"
-              >
-                <BarChart2 className="w-5 h-5 text-gray-400" />
-                <span className="truncate">Insights</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub className="mt-1">
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton asChild>
+                        <Link
+                          href="/dashboard/holdings"
+                          className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                          aria-label="Holdings"
+                        >
+                          <Layers className="w-5 h-5 text-gray-400" />
+                          <span className="truncate">Holdings</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton asChild>
+                        <Link
+                          href="/dashboard/insights"
+                          className="flex items-center gap-3 w-full px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                          aria-label="Insights"
+                        >
+                          <BarChart2 className="w-5 h-5 text-gray-400" />
+                          <span className="truncate">Insights</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          </SidebarMenu>
         </SidebarMenu>
-
-        <SidebarGroup />
-        <SidebarGroup />
       </SidebarContent>
-      
-      <SidebarSeparator className="mx-auto"/>
+
+      <SidebarSeparator className="mx-auto" />
 
       <SidebarFooter>
         <NavUser user={userData} />
