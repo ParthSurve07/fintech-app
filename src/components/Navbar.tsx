@@ -42,6 +42,7 @@ export default function Navbar() {
                       <BreadcrumbPage className="capitalize">
                         {segment}
                       </BreadcrumbPage>
+                      
                     )}
                   </BreadcrumbItem>
 
