@@ -13,7 +13,7 @@ export function ProfitLossCard({ isProfit = true }) {
   const Icon = isProfit ? TrendingUp : TrendingDown;
 
   return (
-    <Card className="w-full max-w-md bg-gray-900 border-gray-800 text-white">
+    <Card className="w-full max-w-md bg-gray-900 border-gray-800 text-white transition-all duration-300 hover:scale-[1.01]">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-gray-400">
           Profit / Loss

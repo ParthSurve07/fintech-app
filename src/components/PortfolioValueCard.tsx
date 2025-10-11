@@ -4,9 +4,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"; // Assuming shadcn/ui setup
+} from "@/components/ui/card"; 
 
-// PROPS for the component to make it dynamic
 interface PortfolioValueCardProps {
   currentValue: number;
   changeAmount: number;
@@ -20,12 +19,10 @@ export function PortfolioValueCard({
   changePercentage,
   isPositive,
 }: PortfolioValueCardProps) {
-  // Determine styles and icons based on performance
   const statusColor = isPositive ? "text-emerald-400" : "text-red-500";
   const Icon = isPositive ? ArrowUp : ArrowDown;
   const sign = isPositive ? "+" : "-";
 
-  // Format numbers for display
   const formattedValue = currentValue.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -36,7 +33,7 @@ export function PortfolioValueCard({
   });
 
   return (
-    <Card className="w-full max-w-md bg-gray-900 border-gray-800 text-white">
+    <Card className="w-full max-w-md bg-gray-900 border-gray-800 text-white transition-all duration-300 hover:scale-[1.01]">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-gray-400">
           Total Portfolio Value
