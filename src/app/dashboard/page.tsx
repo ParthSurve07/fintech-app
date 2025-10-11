@@ -1,7 +1,10 @@
 import { HoldingsCard } from "@/components/HoldingsCard";
 import { InvestedAmountCard } from "@/components/InvestedAmountCard";
+import { InvestmentDistributionChart } from "@/components/InvestmentDistributionChart";
+import { PerformanceTrendChart } from "@/components/PerformanceTrendChart";
 import { PortfolioValueCard } from "@/components/PortfolioValueCard";
 import { ProfitLossCard } from "@/components/ProfitLossCard";
+import { RecentTransactionsTable } from "@/components/RecentTransactionsTable";
 
 export default function Dashboard() {
   return (
@@ -17,8 +20,12 @@ export default function Dashboard() {
         <ProfitLossCard />
         <HoldingsCard />
       </div>
-      <div>
-        pie chart and bar graph
+      <div className="flex px-4 gap-4">
+        <InvestmentDistributionChart />
+        <PerformanceTrendChart />
+      </div>
+      <div className="p-4">
+        <RecentTransactionsTable />
       </div>
     </div>
   )
